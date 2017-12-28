@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Spring from './spring'
 import renderDefault from './component'
-import styled from 'styled-components'
-
-const Container = styled.div`
-  overflow: auto;
-  height: 100%;
-`
+import { ScrollView } from 'react-native'
 
 const MAX = 100
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec))
@@ -115,7 +110,10 @@ export default class PullRefresh extends Component {
       ...props
     } = this.props
     return (
-      <Container
+      <ScrollView
+        contentContainerStyle={{
+          height: '100%'
+        }}
         {...props}
         onScroll    ={!disabled && ::this.onScroll}
         onMouseDown ={!disabled && ::this.onDown}
@@ -125,9 +123,9 @@ export default class PullRefresh extends Component {
         onTouchEnd  ={!disabled && ::this.onUp}
         onTouchMove ={!disabled && ::this.onMove}
       >
-        { render(this.props, this.state) }
         { children }
-      </Container>
+        { render(this.props, this.state) }
+      </ScrollView>
     )
   }
 }

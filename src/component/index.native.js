@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'styled-components/native'
+import styled from 'styled-components'
 import { Easing, Animated, View } from 'react-native'
 import { Svg as NativeSvg, Circle as NativeCircle, Path as NativePath } from 'react-native-svg'
 
